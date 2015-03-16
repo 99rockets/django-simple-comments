@@ -1,0 +1,18 @@
+{% for comment in comments %}
+    <div id="comment_{{ comment.id }}">
+        <div class="commentuser">
+            <a href="{{ comment.user.get_absolute_url }}">
+                {% if comment.user.small_avatar %}
+                <img src="{{ comment.user.small_avatar }}" alt="{{ comment.user.username }}"><br/>
+                {% endif %}
+                <span>{{ comment.user.get_full_name_without_post }}</span>
+            </a>
+        </div>
+        <div class="commenttext">
+            <div class="commentinfo">
+                <time>{{ comment.created }}</time>
+            </div>
+            <p>{{ comment.content|safe }}</p>
+        </div>
+    </div>
+{% endfor %}
